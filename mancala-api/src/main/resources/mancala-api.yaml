@@ -1,0 +1,90 @@
+openapi: 3.0.0
+
+info:
+  version: 1.0.0
+  title: Mancala game
+  description: This is the API for Mancala game
+
+paths:
+
+  /game:
+    post:
+      summary: Create a game
+      operationId: createGame
+      requestBody:
+        description: This endpoint will generate a game board
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MancalaBoardDto'
+      responses:
+        "201":
+          description: CREATED
+
+  /game/{gameId}:
+    parameters:
+      - name: gameId
+        schema:
+          type: string
+        in: path
+        required: true
+        example: 1746c50d-9fdd-4198-bbae-527a51586c87
+        description: UUID of the game
+    get:
+      summary: Retrieve a game
+      operationId: getGame
+      responses:
+        "200":
+          description: Successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MancalaBoardDto'
+
+    put:
+      summary: Update a game
+      operationId: updateGame
+      requestBody:
+        description: This endpoint will update the game board
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelectedPitDto'
+      responses:
+        "200":
+          description: Successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MancalaBoardDto'
+
+components:
+
+  schemas:
+
+    MancalaBoardDto:
+      description: This is the board model
+      type: object
+      properties:
+        firstPlayerName:
+          description: The name of first player
+          type: string
+          example: Hamid
+        secondPlayerName:
+          description: The name of second player
+          type: string
+          example: Bob
+        status:
+          description: The status of the game
+          type: string
+          enum: ["ONGOING","PLAYER1_WON","PLAYER2_WON","TIE"]
+
+    SelectedPitDto:
+      description: This is the selected pit model
+      type: object
+      properties:
+        selectedPit:
+          example: 1
+          type: integer
