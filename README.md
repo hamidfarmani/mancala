@@ -41,6 +41,12 @@ You can simply run the Spring boot application by executing the com.bol.mancala.
 mvn spring-boot:run
 ```
 
+## Swagger
+After running the application, you can check the OpenApi specification in the following url:
+```
+http://localhost:8080/api/swagger-ui/index.html#
+```
+
 ## Formatter
 This project is using formatter. To format the code, you can run the following: 
 ```
