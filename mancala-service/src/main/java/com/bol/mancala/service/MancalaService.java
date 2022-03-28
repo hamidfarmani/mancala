@@ -46,6 +46,7 @@ public class MancalaService {
     MancalaBoard board =
         mancalaRepository.findById(uuid).orElseThrow(() -> new GameNotFoundException(uuid));
     board.setPits(convertToIntArray(board.getPitsString()));
+    LOGGER.info("Found game by uuid of: {}", board.getUuid());
     return board;
   }
 

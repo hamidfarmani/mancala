@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class GamePlay {
 
   /**
-   * This method will start the game with selected pit
+   * This method will sow the board with selected pit
    *
    * @param board
    * @param selectedPit
-   * @return The index of last pit
+   * @return The index of last met pit
    */
   public int sowBoardWithSelectedPit(MancalaBoard board, int selectedPit) {
     int pitIndex;
@@ -39,6 +39,14 @@ public class GamePlay {
     return lastMetPitIndex;
   }
 
+  /**
+   * This method check if it can apply capture stones rule from opponent or not. If so, it will
+   * update the board and returns it.
+   *
+   * @param board
+   * @param lastMetPitIndex
+   * @return updated board
+   */
   public MancalaBoard applyCaptureStonesRule(MancalaBoard board, int lastMetPitIndex) {
     int[] pits = board.getPits();
     if (pits[lastMetPitIndex] == 1) {
@@ -97,6 +105,12 @@ public class GamePlay {
     return isPlayer1Done || isPlayer2Done;
   }
 
+  /**
+   * When the game is over, it should collect all stones and put them in store of each player.
+   *
+   * @param board
+   * @return updated board
+   */
   public MancalaBoard wrapGame(MancalaBoard board) {
     int[] pits = board.getPits();
     for (int i = 0; i < NUMBER_OF_ALL_PITS_AND_STORES; i++) {
@@ -113,6 +127,12 @@ public class GamePlay {
     return board;
   }
 
+  /**
+   * The result of the game will be calculated based on the count of their stores.
+   *
+   * @param board
+   * @return Status of the game
+   */
   public StatusEnum result(MancalaBoard board) {
     int[] pits = board.getPits();
     if (pits[PLAYER1_STORE_INDEX] > pits[PLAYER2_STORE_INDEX]) {
