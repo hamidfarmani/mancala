@@ -1,6 +1,3 @@
-# Hamid Farmani
-This project has been done by Hamid Farmani.
-
 # Getting started
 This project is a game called Mancala. You can read about it in the About section as well.
 
@@ -39,6 +36,12 @@ This will clean the project, install dependencies and run all the unit tests.
 You can simply run the Spring boot application by executing the com.bol.mancala.MancalaApplication. Alternatively, you can use maven plugin like so:
 ```
 mvn spring-boot:run
+```
+
+## Swagger
+After running the application, you can check the OpenApi specification in the following url:
+```
+http://localhost:8080/api/swagger-ui/index.html#
 ```
 
 ## Formatter

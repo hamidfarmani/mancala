@@ -32,6 +32,7 @@
 		<spring-security-web.version>5.6.2</spring-security-web.version>
 		<mysql-connector-java.version>8.0.28</mysql-connector-java.version>
 		<mockito-inline.version>4.0.0</mockito-inline.version>
+		<springdoc-openapi-ui.version>1.6.4</springdoc-openapi-ui.version>
 		<h2.version>2.1.210</h2.version>
 	</properties>
 
@@ -115,6 +116,11 @@
 				<artifactId>h2</artifactId>
 				<version>${h2.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-ui</artifactId>
+				<version>${springdoc-openapi-ui.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
